@@ -1,0 +1,2 @@
+#!/bin/sh
+gforth -W mines.fs $1 $2
