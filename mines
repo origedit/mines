@@ -1,2 +1,20 @@
-#!/bin/sh
-gforth -W mines.fs $1 $2
+#!/usr/bin/env bash
+
+if [ -z $1 ] || [ -z $2 ]
+then
+	echo "enter the size of the grid, like this: 10 8"
+	exit 1
+fi
+
+runner=$(which gforth-fast)
+if [[ ${runner} != *"gforth-fast"* ]]
+then
+	runner=$(which gforth)
+fi
+if [[ ${runner} != *"gforth"* ]]
+then
+	echo "gForth interpreter not found"
+	exit 1
+fi
+
+$runner -W mines.fs $1 $2
